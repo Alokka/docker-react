@@ -9,3 +9,18 @@ before_install:
 script:
   - docker run -e CI=true aloka/docker-react npm run test
 
+deploy:
+  provider: elasticbeanstalk
+  regoion: "us-west-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-west-1-551188626830"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_Access_Key 
+  secret:access_key: 
+    secure: "$AWS_Secret_key"
+
+    
+
